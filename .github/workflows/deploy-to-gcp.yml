@@ -1,0 +1,21 @@
+# .github/workflows/deploy-to-gcp.yml
+name: Deploy to GCP
+
+on:
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to deploy to'
+        required: true
+        default: 'dev'
+
+jobs:
+  deploy:
+    uses: BonnierNews/reusable-github-workflows/.github/workflows/plattform-wif.yml@main
+    with:
+      gcp_project: alex-laborationer-o2fj
+      environment: ${{ github.event.inputs.environment }}
