@@ -1,0 +1,2 @@
+name = 'sem'
+print(name)
